@@ -1,0 +1,211 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 15px;
+    font-family: monospace;
+    color: black;
+    background-color: gray;
+    
+}
+
+h1{
+    font-size: 30px;
+}
+
+/* carousel styles  */
+.carousel-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    height:100vh;
+}
+
+.carousel-container{
+    padding: 50px;
+}
+
+.carousel-card{
+    padding: 50px;
+    height: 250px;
+    width: 350px;
+    background-color:tomato;
+    border: 2px solid black;
+    box-shadow: 10px 10px 0 black;
+    border-radius: 5px;
+    margin:10px;
+}
+
+/* flipcard section  */
+.flipcard-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    height:100vh;
+    background-color: cadetblue;
+}
+
+.flip-container{
+    height: 250px;
+    width: 350px;
+    perspective: 1000px;
+}
+
+.flip-card{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    transition: all 1s ease-in-out;
+    transform-style: preserve-3d;
+}
+
+.front-card{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: tomato;
+    backface-visibility: hidden;
+    transform: rotateY(0deg);
+    padding: 50PX;
+    border-radius: 5px;
+    border: 2px solid black;
+    box-shadow: 10px 10px 0 black;
+}
+
+.back-card{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: aliceblue;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    padding: 50px;
+    border-radius: 5px;
+    border: 2px solid black;
+    box-shadow: 10px 10px 0 black;
+}
+
+.flip-container:hover .flip-card{
+    transform: rotateY(180deg);
+}
+
+/* gallery section  */
+.gallery-section{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    height:100vh;
+    background : linear-gradient(grey, black);
+    backdrop-filter: blur(50px);
+    transition: all .1s linear;
+}
+
+
+.gallery-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    min-height:400px;
+    width: 60%;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 5px ;
+    background-color: white;
+    box-shadow: 10px 10px 0 black;
+    overflow-y: auto;
+}
+
+.gallery-image{
+    height: 150px;
+    max-width: 100%;
+    width: auto;
+    object-fit: fill;
+    cursor: pointer;
+}
+
+.gallery-image.gallery{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(3);
+    transition: all .2s ease-in-out;
+}
+
+/* Hoeizontal hover image container  */
+.hover-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    height:100vh;
+    background-color: black;
+}
+
+.hover-container h1{
+    color: gray;
+}
+
+.hover-image-container{
+    display: flex;
+    gap: 20px;
+    perspective: 1000px;
+    transform: transform-style(preserve-3d);
+}
+
+.image-card{
+    height: 200px;
+    width: 120px;
+    filter: brightness(0);
+    transition: all .1s ease-in-out;
+}
+
+.hover-image-container figure img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.image-card:hover{
+    transform: scale(120%);
+    filter: brightness(100%);
+}
+
+.image-card:hover +* {
+    transform: rotateY(40deg);
+    filter: brightness(50%);
+}
+
+.image-card:hover +* +*{
+    filter: brightness(30%);
+}
+
+
+
+.image-card:hover +* +* +*{
+    filter: brightness(10%);
+}
+
+.image-card:has(+*:hover){
+    transform: rotateY(-40deg);
+    filter: brightness(50%);
+}
+
+.image-card:has(+* +*:hover){
+    filter: brightness(30%);
+}
+
+.image-card:has(+* +* +*:hover){
+    filter: brightness(10%);
+}
+
