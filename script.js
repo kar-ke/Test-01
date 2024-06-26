@@ -13,15 +13,26 @@ $(document).ready(function () {
     });
 
     // infinite scroll 
-    document.querySelectorAll('.scroll-item').forEach((item, i) => {
+    document.querySelectorAll('.marquee-item').forEach((item, i) => {
         item.style.setProperty('--n', i + 1);
     });
 
     // accordian 
-    document.querySelectorAll('.accordian-item').forEach(function (element) {
+    document.querySelectorAll('.accordion-item').forEach((element) => {
         element.addEventListener('click', function () {
-            element.classList.toggle('active');
+            document.querySelectorAll('.accordion-item').forEach((item) => {
+                if (item !== this && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                };
+            });
+            this.classList.toggle('active');
         });
     });
 
+
+    // to-to list 
+    let input = document.getElementById('task');
+    let button = document.getElementById('add-btn');
+    let todolist = document.getElementById('todo-list');
 });
+
