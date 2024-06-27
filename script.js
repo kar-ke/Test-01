@@ -47,14 +47,7 @@ button.addEventListener('click', () => {
     if (input.value === '') {
         alert("Enter valid task...")
     } else {
-        let li = document.createElement('li');
-        li.innerHTML = input.value;
-        console.log(li)
-        todolist.appendChild(li);
-
-        let span = document.createElement('span');
-        span.innerHTML = '&#215;'
-        li.appendChild(span);
+        createTask();
     };
 
     input.value = '';
@@ -67,14 +60,38 @@ todolist.addEventListener('click', (element) => {
         element.target.classList.toggle('checked')
         saveData();
     }
-    else if (element.target.tagName === 'SPAN') {
-        element.target.parentElement.remove();
+    else if (element.target.id === 'delete') {
+        removeTask(element);
+        input.value = '';
         saveData();
+    }
+    else if (element.target.id === 'edit') {
+        input.value = element.target.parentElement.parentElement.innerText;
+        removeTask(element);
     };
 });
 
+
+function createTask(){
+    let listTemplate = `${input.value}
+                        <span>
+                            <i id="edit" class='bx bxs-pencil f20' ></i>
+                            <i id="delete" class='bx bx-x f20'></i>
+                        </span>`
+    let li = document.createElement('li');
+    todolist.appendChild(li).innerHTML = listTemplate;
+};
+
+function removeTask(element) {
+    element.target.parentElement.parentElement.remove();
+};
+
 function saveData() {
-    localStorage.setItem('data', todolist.innerHTML);
+    try {
+        localStorage.setItem('data', todolist.innerHTML);
+    } catch (err) {
+        console.error('Failed to save data to localStorage', err);
+    };
 };
 
 function setData() {
@@ -82,3 +99,4 @@ function setData() {
 };
 
 setData();
+
