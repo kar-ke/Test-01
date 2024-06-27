@@ -38,8 +38,9 @@ $(document).ready(function () {
 
 
 // todo list 
-let button = document.getElementById('add');
-let input = document.getElementById('input');
+
+let input = document.getElementById('inputBox');
+let button = document.getElementById('add-button');
 let todolist = document.getElementById('todolist');
 
 button.addEventListener('click', () => {
@@ -48,33 +49,36 @@ button.addEventListener('click', () => {
     } else {
         let li = document.createElement('li');
         li.innerHTML = input.value;
+        console.log(li)
         todolist.appendChild(li);
 
         let span = document.createElement('span');
-        span.innerHTML = "<i class='bx bx-x f20'></i>"
-        li.appendChild(span)
-    }
+        span.innerHTML = '&#215;'
+        li.appendChild(span);
+    };
+
     input.value = '';
     saveData();
 })
 
-todolist.addEventListener('click', function (element) {
+
+todolist.addEventListener('click', (element) => {
     if (element.target.tagName === 'LI') {
-        element.target.classList.toggle('checked');
+        element.target.classList.toggle('checked')
         saveData();
     }
-    else if (element.target.tagName === 'I') {
-        element.target.parentElement.parentElement.remove();
+    else if (element.target.tagName === 'SPAN') {
+        element.target.parentElement.remove();
         saveData();
     };
 });
 
 function saveData() {
-    localStorage.setItem('data', todolist.innerHTML )
+    localStorage.setItem('data', todolist.innerHTML);
 };
 
-function showData() {
-    todolist.innerHTML = localStorage.getItem('data')
+function setData() {
+    todolist.innerHTML = localStorage.getItem('data');
 };
 
-showData();
+setData();

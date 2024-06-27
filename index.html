@@ -5,6 +5,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Test components</title>
 
+		<!-- google font  -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet">
+
 		<!-- styles  -->
 		<link rel="stylesheet" href="/styles.css" />
 
@@ -64,24 +71,6 @@
 				<figure>
 					<img src="./assets/images/img-3.jpg" alt="image1" class="gallery-image">
 				</figure>
-				<figure>
-					<img src="./assets/images/img-4.jpg"  alt="image1" class="gallery-image">
-				</figure>
-				<figure>
-					<img src="./assets/images/img-5.jpg" alt="image1" class="gallery-image">
-				</figure>
-				<figure>
-					<img src="./assets/images/img-6.jpg" alt="image1" class="gallery-image">
-				</figure>
-				<figure>
-					<img src="./assets/images/img-7.jpg"  alt="image1" class="gallery-image">
-				</figure>
-				<figure>
-					<img src="./assets/images/img-8.jpg" alt="image1" class="gallery-image">
-				</figure>
-				<figure>
-					<img src="./assets/images/img-9.jpg" alt="image1" class="gallery-image">
-				</figure>
 			</div>
 		</section>
 
@@ -131,7 +120,6 @@
 				<div class="marquee-item">>> item</div>
 				<div class="marquee-item">>> item</div>
 			</div>
-			
 		</section>
 
 
@@ -168,16 +156,15 @@
 
 
 		<!-- todo list  -->
-		<section class="todo-list-section">
-			<h1>7 - to-do list</h1>
-			<div class="main-wrapper">
-				<input type="text" id="input" placeholder="Enter your task">
-				<button id="add">Add</button>
+		<section class="todo-section">
+			<div class="container">
+				<h1>To-do list</h1>
+				<div class="input-wrapper">
+					<input type="text" id="inputBox" placeholder="Enter your task...">
+					<button id="add-button">Add</button>
+				</div>
 				<ul id="todolist">
-					<!-- <li class="checked">task 1</li>
-					<li>task 1</li>
-					<li>task 1</li> -->
-				</li>
+				</ul>
 			</div>
 		</section>
 
